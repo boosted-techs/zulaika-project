@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/assets/vendor/chartist/css/chartist.min.css">
     <link href="/assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
     <link href="/assets/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet"/>
     {block name="styles"}{/block}
     <link href="/assets/css/style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -157,7 +158,7 @@
     ***********************************-->
     <div class="footer">
         <div class="copyright">
-            <p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">KEN</a> {$smarty.now|date_format:'%Y'}</p>
+            <p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">Zulaika</a> {$smarty.now|date_format:'%Y'}</p>
         </div>
     </div>
     <!--**********************************
@@ -190,8 +191,14 @@
 <script src="/assets/js/custom.min.js"></script>
 <script src="/assets/js/deznav-init.js"></script>
 <script src="/assets/vendor/owl-carousel/owl.carousel.js"></script>
+<script src="/assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
+<Script src="/assets/axios/axios.min.js"></Script>
 <script src="/assets/scripts.js"></script>
-""
+<script>
+    {literal}
+    $('.table').DataTable();
+    {/literal}
+</script>
 {block name="scripts"}{/block}
 </body>
 </html>

@@ -39,7 +39,8 @@ class Car_model extends Model
     /**
      * @throws Exception
      */
-    #[ArrayShape(['message' => "string", "status" => "string"])] function delete_car_type($type) {
+    #[ArrayShape(['message' => "string", "status" => "string"])] function delete_car_type($type): array
+    {
         $this->db->where("id", $type);
         $data = $this->db->getOne("car_types", "id, deleted");
         if (empty($data))
@@ -48,6 +49,18 @@ class Car_model extends Model
         $this->db->where("id", $data['id']);
         $this->db->update("car_types", ['deleted' => $deleted]);
         return ['message' => " Car type successfully updated.", "status" => "SUCCESS"];
+    }
+
+    /**
+     * @throws Exception
+     */
+    function get_cars($reg = false): MysqliDb|array|string
+    {
+        if ($reg)
+            $this->db->where("reg_no",         strtoupper(str_replace(" ", "", trim($reg))));
+        $this->db->join("car_types", "car_types.id = cars.car_type", 'left');
+        $data = $this->db->get("cars", null, "cars.id, description, reg_no,cars.date_added, car_types.id as type,rate, car_types.type as car_type");
+        return empty($data) ? false : $data;
     }
 
 }

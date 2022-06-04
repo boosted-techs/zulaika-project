@@ -22,7 +22,7 @@ class Accounts_model extends Model
     function is_logged_in(): bool
     {
         if (empty($this->session->data("user")))
-            $this->redirect("/wp-admin");
+            $this->redirect("/");
         return true;
     }
 }

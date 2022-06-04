@@ -15,6 +15,9 @@ class Dashboard extends Controller
      */
     function index() {
         $this->model->Accounts_model->is_logged_in();
+        $this->smarty->assign("car_types", $this->model->Car_model->get_car_types());
+        $this->smarty->assign("slots", $this->model->Parking_model->get_slots());
+        $this->smarty->assign("bookings", $this->model->Parking_model->get_bookings());
         $this->smarty->display("home.tpl");
     }
 
