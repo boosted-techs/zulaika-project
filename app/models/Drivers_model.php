@@ -15,7 +15,7 @@ class Drivers_model extends Model
         if (empty($phone))
             return false;
         $this->db->where("phone_number", $phone);
-        return $this->db->getOne("driver", "names, phone_number, email, gender, residence");
+        return $this->db->getOne("driver", "id, names, phone_number, email, gender, residence");
     }
 
 }

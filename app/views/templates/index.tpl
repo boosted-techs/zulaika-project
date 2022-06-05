@@ -158,7 +158,7 @@
     ***********************************-->
     <div class="footer">
         <div class="copyright">
-            <p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">Zulaika</a> {$smarty.now|date_format:'%Y'}</p>
+            <p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">Zulaika</a> {$smarty.now|date_format:'Y'}</p>
         </div>
     </div>
     <!--**********************************

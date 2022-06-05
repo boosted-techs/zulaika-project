@@ -25,4 +25,12 @@ class Accounts_model extends Model
             $this->redirect("/");
         return true;
     }
+
+    /**
+     * @throws Exception
+     */
+    function get_clients(): MysqliDb|array|string
+    {
+        return $this->db->get("driver", null, "names, email, phone_number, date_added, residence, gender, (select count(id) from bookings where user = driver.id) as bookings");
+    }
 }

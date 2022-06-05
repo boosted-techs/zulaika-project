@@ -53,7 +53,34 @@
                 </tbody>
             </table>
         </div>
-
+        <div class="col-md-12">
+            <h2>CARS</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>REG NO</th>
+                    <th>DATE ADDED</th>
+                    <th>COST/Hr</th>
+                    <th>CAR TYPE</th>
+                    <th>DESCRIPTION</th>
+                </tr>
+                </thead>
+                <tbody>
+                {$i = 1}
+                {foreach $cars as $car}
+                    <tr>
+                        <td>{$i++}</td>
+                        <td>{$car.reg_no}</td>
+                        <td>{$car.date_added}</td>
+                        <td>{$car.rate|number_format}</td>
+                        <td>{$car.car_type}</td>
+                        <td>{$car.description}</td>
+                    </tr>
+                {/foreach}
+                </tbody>
+            </table>
+        </div>
     </div>
 
 {/block}

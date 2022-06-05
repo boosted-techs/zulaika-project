@@ -21,7 +21,7 @@
             {/if}
             <div class="row">
                 {foreach $slots as $slot}
-                    <div class="col-md-3 col-sm-4 border border-info {if $slot.deleted == 1}bg-danger border-danger text-white{/if}">
+                    <div class="col-md-3 col-sm-4 border border-info {if $slot.deleted == 1}bg-danger border-danger text-white{/if}{if $slot.slot_state == 1}bg-dark border-dark text-white{/if}">
                         <div class="dropdown">
                             <a href="javascript:void(0)" data-toggle="dropdown" ><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><circle fill="#000000" cx="5" cy="12" r="2"/><circle fill="#000000" cx="12" cy="12" r="2"/><circle fill="#000000" cx="19" cy="12" r="2"/></g></svg></a>
                             <ul class="dropdown-menu dropdown-menu-right">
@@ -37,6 +37,9 @@
                         <h1 class="text-center font-weight-bolder p-5">{$slot.label}</h1>
                         {if $slot.deleted == 1}
                             <p class="text-center">Deleted</p>
+                        {/if}
+                        {if $slot.slot_state == 1}
+                            <p class="text-center">Occupied</p>
                         {/if}
                     </div>
                 {/foreach}

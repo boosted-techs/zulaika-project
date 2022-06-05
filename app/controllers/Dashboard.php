@@ -18,7 +18,19 @@ class Dashboard extends Controller
         $this->smarty->assign("car_types", $this->model->Car_model->get_car_types());
         $this->smarty->assign("slots", $this->model->Parking_model->get_slots());
         $this->smarty->assign("bookings", $this->model->Parking_model->get_bookings());
+        $this->smarty->assign("statics", $this->model->Parking_model->get_statics());
         $this->smarty->display("home.tpl");
+    }
+
+    /**
+     * @throws SmartyException
+     */
+    function print($id) {
+        $this->model->Accounts_model->is_logged_in();
+
+        $this->smarty->assign("bookings", $this->model->Parking_model->get_bookings($id));
+
+        $this->smarty->display("receipt.tpl");
     }
 
     /**
@@ -35,6 +47,7 @@ class Dashboard extends Controller
      */
     function clients() {
         $this->model->Accounts_model->is_logged_in();
+        $this->smarty->assign("clients", $this->model->Accounts_model->get_clients());
         $this->smarty->display("clients.tpl");
     }
 
@@ -44,6 +57,7 @@ class Dashboard extends Controller
     function cars() {
         $this->model->Accounts_model->is_logged_in();
         $this->smarty->assign("car_types", $this->model->Car_model->get_car_types());
+        $this->smarty->assign("cars", $this->model->Car_model->get_cars());
         $this->smarty->display("cars.tpl");
     }
 

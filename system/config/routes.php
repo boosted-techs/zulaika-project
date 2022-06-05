@@ -16,3 +16,6 @@ $route['del/slot/(:any)']                   =               "Dashboard/delete_sl
 $route['parking-slots']                     =               "Dashboard/parking_slots";
 $route['s/car-look-up']                     =               "Cars/car_look_up";
 $route['s/driver-look-up']                  =               "Drivers/driver_look_up";
+
+$route['checkout/(:any)']                   =               "Bookings/checkout/$1";
+$route['print/(:any)']                      =               "Dashboard/print/$1";

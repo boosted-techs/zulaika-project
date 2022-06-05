@@ -2,17 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f350196b-f37f-4359-abd7-60da1445aebd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/controllers/Bookings.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/Cars.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/Drivers.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/Drivers_model.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/templates/receipt.tpl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/Bookings.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Bookings.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/Dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Dashboard.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/Accounts_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Accounts_model.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/Car_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Car_model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/Drivers_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Drivers_model.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/Parking_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Parking_model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/templates/cars.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/templates/cars.tpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/templates/clients.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/templates/clients.tpl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/templates/home.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/templates/home.tpl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/templates/index.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/templates/index.tpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/templates/slots.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/templates/slots.tpl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scripts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/system/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/system/config/routes.php" afterDir="false" />
     </list>
@@ -85,6 +87,10 @@
       <workItem from="1653676943791" duration="2058000" />
       <workItem from="1654062409962" duration="9000" />
       <workItem from="1654062438802" duration="1027000" />
+      <workItem from="1654344323374" duration="305000" />
+      <workItem from="1654346329523" duration="230000" />
+      <workItem from="1654347742955" duration="251000" />
+      <workItem from="1654407295238" duration="11426000" />
     </task>
     <servers />
   </component>

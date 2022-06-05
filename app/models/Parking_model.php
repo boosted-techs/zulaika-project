@@ -31,7 +31,7 @@ class Parking_model extends Model
      */
     function get_slots(): MysqliDb|array|string
     {
-        return $this->db->get("parking_slots", null, "date_added, label, deleted, id");
+        return $this->db->get("parking_slots", null, "date_added, label, deleted, id, (select status from bookings where slot = parking_slots.id and status = 1) as slot_state");
     }
 
     /**
@@ -64,6 +64,13 @@ class Parking_model extends Model
         $description = trim($this->inputs->post("description"));
         $slot = trim($this->inputs->post("slot"));
         $date = date("Y-m-d");
+
+        $user_id = $this->inputs->post("user_id");
+        $car_id = $this->inputs->post("car_id");
+        if ($user_id) {
+            $client = $user_id;
+            $names = true;
+        }
         if (empty($phone) or empty($names) or empty($car_reg))
             return ['message' => "Phone number or client names or Car registration number should be left out", "status" => "ERROR"];
         $this->db->where("slot", $slot);
@@ -71,15 +78,20 @@ class Parking_model extends Model
         if ($this->db->getValue("bookings", 'id'))
             return ['message' => "Parking slot occupied already", "status" => "ERROR"];
 
-        $car = $this->db->insert("cars", ['reg_no' => $car_reg, 'date_added' => $date, "car_type" => $type, "description" => $description]);
+        if (empty($car_id))
+            $car = $this->db->insert("cars", ['reg_no' => $car_reg, 'date_added' => $date, "car_type" => $type, "description" => $description]);
+        else
+            $car = $car_id;
+        if (empty($user_id))
         $client = $this->db->insert("driver", ['names' => $names, 'phone_number' => $phone, 'email' => $email, 'residence' => $address, 'date_added' => $date, 'gender' => $gender]);
+
         $this->db->insert("bookings", [
             'slot' => $slot,
             'car' => $car,
             'user' => $client,
             'date_added' => $date,
-            'on_time' => date("H:i:s"),
-            'off_time' => date("H:i:s"),
+            'on_time' => date("Y-m-d H:i:s"),
+            'off_time' => date("Y-m-d H:i:s"),
             'status' => 1
         ]);
         return ['message' => "Parking record successfully added", "status" => "SUCCESS"];
@@ -88,8 +100,10 @@ class Parking_model extends Model
     /**
      * @throws Exception
      */
-    function get_bookings(): MysqliDb|array|string
+    function get_bookings($id = false): MysqliDb|array|string
     {
+        if ($id)
+            $this->db->where("bookings.id", $id);
         $this->db->orderBy("bookings.id", 'desc');
         $this->db->orderBy("bookings.status", 'desc');
         $this->db->orderBy("bookings.date_added", 'desc');
@@ -97,6 +111,45 @@ class Parking_model extends Model
         $this->db->join("car_types", "car_types.id = cars.car_type", 'left');
         $this->db->join("driver", "driver.id = bookings.user", "left");
         return $this->db->get("bookings", null, "bookings.id, bookings.status, bookings.date_added, bookings.on_time,
-        bookings.off_time, cars.description, cars.reg_no,(select label from parking_slots where id = bookings.slot) as slot,  car_types.type, car_types.rate, names, phone_number, residence, gender");
+        bookings.off_time, cars.description, hours, cars.reg_no,(select label from parking_slots where id = bookings.slot) as slot,  car_types.type, car_types.rate, names, phone_number, residence, gender");
+    }
+
+    /**
+     * @throws Exception
+     */
+    #[ArrayShape(['message' => "string", "status" => "string"])] function checkout($slot): array
+    {
+        $this->db->where("id", $slot);
+        $on_time = strtotime($this->db->getValue("bookings", 'on_time'));
+        $off_time = strtotime(date("Y-m-d H:i:s"));
+        $hours = round((($off_time - $on_time) / 3600), 4);
+        $this->db->update("bookings", ["status" => 0, 'off_time' => $off_time, "hours" => $hours]);
+        return ['message' => "Checkout Successful", "status" => "SUCCESS"];
+    }
+
+    /**
+     * @throws Exception
+     */
+    #[ArrayShape(['cars' => "array|mixed|null", 'slots' => "array|null|string", 'users' => "array|mixed|null", "amount" => "float|int"])] function get_statics(): array
+    {
+        $all_cars = $this->db->getValue("bookings", "count(id)");
+        /*
+         * ALl parking slots
+         */
+        $this->db->where("deleted", 0);
+        $slots = $this->db->getOne("parking_slots", "count(id) as slots, (select count(id) from bookings where status = 1) as booked");
+        /*
+         * Users
+         */
+        $users = $this->db->getValue("driver", "count(id)");
+        /*
+         * Costs
+         */
+        $this->db->where("status", 0);
+        $amount = $this->db->get("bookings",null, "(hours * (select rate from car_types where id = (select car_type from cars where id = bookings.car))) as cost");
+        $cost = 0;
+        foreach($amount as $i)
+            $cost += round($i['cost'],2);
+        return ['cars' => $all_cars, 'slots' => $slots, 'users' => $users, "amount" => number_format($cost, 2)];
     }
 }

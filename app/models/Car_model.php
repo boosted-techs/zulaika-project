@@ -62,5 +62,4 @@ class Car_model extends Model
         $data = $this->db->get("cars", null, "cars.id, description, reg_no,cars.date_added, car_types.id as type,rate, car_types.type as car_type");
         return empty($data) ? false : $data;
     }
-
 }
