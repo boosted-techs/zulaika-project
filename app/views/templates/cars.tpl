@@ -31,7 +31,7 @@
                 <tbody>
                 {$i=1}
                 {foreach $car_types as $car}
-                    <tr {if $car.deleted == 1}class="bg-danger text-white"{/if}>
+                    <tr {if $car.deleted == 1}class="bg-danger text-danger"{/if}>
                         <td>{$i++}</td>
                         <td>{$car.type}</td>
                         <td>{$car.rate|number_format}</td>
