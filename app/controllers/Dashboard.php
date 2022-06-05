@@ -84,4 +84,9 @@ class Dashboard extends Controller
         $response = $this->model->Car_model->delete_car_type($type);
         $this->redirect("/cars?m=" . str_replace(" ", "%20", $response['message']) . "&s=" . $response['status']);
     }
+
+    function logout(){
+        $this->session->destroy();
+        $this->redirect("/");
+    }
 }

@@ -11,11 +11,12 @@ $route['dashboard']                         =               "Dashboard/index";
 $route['data/add-car-type']                 =               "Dashboard/add_car_type";
 $route['data/add-slots']                    =               "Dashboard/add_slot";
 $route['data/book']                         =               "Bookings/reserve";
-$route['del/car-type/(:any)']               =               "Dashboard/delete_car_type/$1";
-$route['del/slot/(:any)']                   =               "Dashboard/delete_slot/$1";
+$route['_logout']                            =               "Dashboard/logout";
 $route['parking-slots']                     =               "Dashboard/parking_slots";
 $route['s/car-look-up']                     =               "Cars/car_look_up";
 $route['s/driver-look-up']                  =               "Drivers/driver_look_up";
 
 $route['checkout/(:any)']                   =               "Bookings/checkout/$1";
+$route['del/car-type/(:any)']               =               "Dashboard/delete_car_type/$1";
+$route['del/slot/(:any)']                   =               "Dashboard/delete_slot/$1";
 $route['print/(:any)']                      =               "Dashboard/print/$1";
