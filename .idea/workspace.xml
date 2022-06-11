@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f350196b-f37f-4359-abd7-60da1445aebd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/controllers/Dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/templates/index.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/templates/index.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/system/config/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +76,10 @@
       <workItem from="1654344323374" duration="305000" />
       <workItem from="1654346329523" duration="230000" />
       <workItem from="1654347742955" duration="251000" />
-      <workItem from="1654407295238" duration="12196000" />
+      <workItem from="1654407295238" duration="12794000" />
+      <workItem from="1654690164598" duration="823000" />
+      <workItem from="1654717832504" duration="697000" />
+      <workItem from="1654837693769" duration="277000" />
     </task>
     <servers />
   </component>
